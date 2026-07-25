@@ -1,32 +1,44 @@
-# React + TypeScript + Vite
+# PagePulse: Dreadnought Edition
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A high-performance, production-grade URL analysis engine. 
 
-Currently, two official plugins are available:
+PagePulse abandons the fragility of simple scripts and standard fetch requests. It traverses redirect chains, interrogates native SSL/TLS security layers via socket probing, and rips open the DOM to extract deep HTML metadata (SEO, structure, and accessibility metrics) with absolute precision. The frontend then derives an intelligent, 100-point scoring matrix from this raw telemetry, wrapped in a cinematic, enterprise-grade UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live Deployment:** [Insert Your Deployed Link Here]
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🏗 The Architecture of Resilience
 
-## Expanding the Oxlint configuration
+This service is built to withstand production traffic and hostile environments. The infrastructure honors the traditional laws of backend engineering while utilizing forward-thinking extraction techniques:
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+*   **Concurrency Limits:** Native semaphores throttle heavy HTML parsing (`cheerio`) and SSL Socket probes, preventing the engine from exhausting server memory under heavy assault.
+*   **Intelligent Caching:** Repeat audits within a configurable time window (default 60s) are served directly from an LRU memory cache, bypassing network traversal entirely.
+*   **Traffic Control:** Strict rate limiting protects the API from abuse and DDoS attempts on a per-client basis.
+*   **Resilience & Timeouts:** Hard bounds on execution time (15s limit) ensure hanging target servers do not consume thread resources.
+*   **Structured Telemetry:** Every request is stamped with a unique `requestId` and logged systematically for tracing.
+*   **The Crucible (CI/CD):** A GitHub Actions pipeline strictly enforces code quality and executes the Vitest testing suite on every push, ensuring the API contract is never broken.
 
+---
+
+## 📊 The Intelligence Matrix (Frontend)
+
+The frontend is not merely a display; it is an analytical engine that processes the backend telemetry into actionable intelligence.
+
+*   **Executive Summary:** Calculates an overall Health Score out of 100 based on latency, security headers, protocol, and SEO optimization.
+*   **Network Vitals:** Visualizes payload sizes, total response times, and exposes the raw HTTP response headers.
+*   **Routing & Security:** Traces every intermediary hop in a redirect chain and exposes SSL certificate issuers, TLS versions, and HSTS policy enforcement.
+*   **Deep SEO & HTML:** Counts H1/H2 tags, evaluates meta description length, and hunts down images missing crucial ALT attributes for accessibility.
+
+---
+
+## 🔌 The API Contract
+
+### **Endpoint:** `POST /api/audit`
+Initiates a deep analysis of the target URL.
+
+#### **Request Payload**
 ```json
 {
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+  "url": "[https://www.verticx.in](https://www.verticx.in)"
 }
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.

@@ -38,7 +38,7 @@ describe("Audit API Validation & Resilience", () => {
     expect(res.body).toHaveProperty("requestId");
     expect(res.body.data.url).toBe("https://example.com");
     expect(res.body.data.status).toBe(200);
-    expect(res.body.data).toHaveProperty("title");
+    expect(res.body.data.seo).toHaveProperty("title"); // Fixed: nested in seo
     expect(res.body.data).toHaveProperty("responseTime");
   }, 15000);
 });
